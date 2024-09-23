@@ -13,7 +13,7 @@ export const publicClient = createPublicClient({
 
 const walletClient = createWalletClient({
   account,
-  chain: Base,
+  chain: base,
   transport: http(process.env.ALCHEMY_URL),
 });
 
