@@ -1,4 +1,6 @@
 {
+output": {
+{
 "abi": 
 [
 	{
@@ -636,3 +638,16 @@
 		],
 		"name": "tokenURI",
 		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
+
+}
+}
