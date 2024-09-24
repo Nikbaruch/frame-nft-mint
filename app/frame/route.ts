@@ -4,17 +4,17 @@ import { mintNft, balanceOf } from "@/utils/mint";
 import { PinataFDK } from "pinata-fdk";
 
 const fdk = new PinataFDK({
-  pinata_jwt: process.env.eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiI2Y2M1YmU2NS1kODYxLTQ1ZTAtYWViNy04YTgzMDdjODRlYTAiLCJlbWFpbCI6Im5pY29sYXMubGFmYXkwMUBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwicGluX3BvbGljeSI6eyJyZWdpb25zIjpbeyJkZXNpcmVkUmVwbGljYXRpb25Db3VudCI6MSwiaWQiOiJGUkExIn0seyJkZXNpcmVkUmVwbGljYXRpb25Db3VudCI6MSwiaWQiOiJOWUMxIn1dLCJ2ZXJzaW9uIjoxfSwibWZhX2VuYWJsZWQiOmZhbHNlLCJzdGF0dXMiOiJBQ1RJVkUifSwiYXV0aGVudGljYXRpb25UeXBlIjoic2NvcGVkS2V5Iiwic2NvcGVkS2V5S2V5IjoiNmFkNzNiNzUyYTYyZTExNzgwMWQiLCJzY29wZWRLZXlTZWNyZXQiOiIyODgzNjRmNWQ1NTkyNWY1ZTg0Y2Y1NDg3NmI0YzI4NDIyNmY5ZjIwOTczYzFjYmFlZjdjYmIyMjhjYWQ2NzY2IiwiZXhwIjoxNzU4NTMwNDA0fQ.YJYYS55FrpUyQI8EXnV2KC-UFtJYJ3SFX1K9PS4cEqE as string,
-  pinata_gateway: process.env.gold-intimate-ostrich-580.mypinata.cloud as string,
+  pinata_jwt: process.env.PINATA_JWT as string,
+  pinata_gateway: process.env.GATEWAY_URL as string,
 });
 
 export async function GET(req: NextRequest, res: NextResponse) {
   try {
     const frameMetadata = await fdk.getFrameMetadata({
-      post_url: `${process.env.https://frame-nft-mint-pied.vercel.app/}/frame`,
+      post_url: `${process.env.BASE_URL}/frame`,
       buttons: [{ label: "Mint NFT", action: "post" }],
       aspect_ratio: "1:1",
-      cid: "QmNjEMqGKBcqfNRwx5xDoitXUHFfkM7N8nx6JLjHvbTMhR",
+      cid: "QmSYN7KT847Nado3fxFafYZgG6NXTMZwbaMvU9jhu5nPmJ",
     });
     return new NextResponse(frameMetadata);
   } catch (error) {
@@ -35,13 +35,13 @@ export async function POST(req: NextRequest, res: NextResponse) {
       const mint = await mintNft(address);
       console.log(mint);
       const frameMetadata = await fdk.getFrameMetadata({
-        post_url: `${process.env.https://frame-nft-mint-pied.vercel.app/}/redirect`,
+        post_url: `${process.env.BASE_URL}/redirect`,
         buttons: [
           { label: "Blog Tutorial", action: "post_redirect" },
           { label: "Video Tutorial", action: "post_redirect" },
         ],
         aspect_ratio: "1:1",
-        cid: "QmNjEMqGKBcqfNRwx5xDoitXUHFfkM7N8nx6JLjHvbTMhR",
+        cid: "QmUx3kQH4vR2t7mTmW3jHJgJgJGxjoBsMxt6z1fkZEHyHJ",
       });
       if (isValid) {
         await fdk.sendAnalytics("frame-mint-tutorial-mint", body);
@@ -54,13 +54,13 @@ export async function POST(req: NextRequest, res: NextResponse) {
     }
   } else {
     const frameMetadata = await fdk.getFrameMetadata({
-      post_url: `${process.env.https://frame-nft-mint-pied.vercel.app/}/redirect`,
+      post_url: `${process.env.BASE_URL}/redirect`,
       buttons: [
         { label: "Blog Tutorial", action: "post_redirect" },
         { label: "Video Tutorial", action: "post_redirect" },
       ],
       aspect_ratio: "1:1",
-      cid: "QmNjEMqGKBcqfNRwx5xDoitXUHFfkM7N8nx6JLjHvbTMhR",
+      cid: "QmaaEbtsetwamJwfFPAQAFC6FAE1xeYsvF7EBKA8NYMjP2",
     });
     if (isValid) {
       await fdk.sendAnalytics("frame-mint-tutorial-mint", body);
