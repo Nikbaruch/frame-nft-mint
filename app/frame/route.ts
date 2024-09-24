@@ -12,7 +12,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
   try {
     const frameMetadata = await fdk.getFrameMetadata({
       post_url: `${process.env.BASE_URL}/frame`,
-      buttons: [{ label: "Mint Me", action: "post" }],
+      buttons: [{ label: "Mint NFT", action: "post" }],
       aspect_ratio: "1:1",
       cid: "QmNjEMqGKBcqfNRwx5xDoitXUHFfkM7N8nx6JLjHvbTMhR",
     });
