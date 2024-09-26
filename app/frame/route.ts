@@ -69,5 +69,3 @@ export async function POST(req: NextRequest, res: NextResponse) {
     return new NextResponse(frameMetadata);
   }
 }
-
-
