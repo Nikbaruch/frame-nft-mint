@@ -7,13 +7,13 @@ const contractAddress = process.env.CONTRACT_ADDRESS as `0x`;
 const account = privateKeyToAccount((process.env.PRIVATE_KEY as `0x`) || "");
 
 export const publicClient = createPublicClient({
-  chain: base,
+  chain: baseSepolia,
   transport: http(process.env.ALCHEMY_URL),
 });
 
 const walletClient = createWalletClient({
   account,
-  chain: base,
+  chain: baseSepolia,
   transport: http(process.env.ALCHEMY_URL),
 });
 
